@@ -1,38 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "cyancom/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.9"
-      }
-    },
-    {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles_build"
-      }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python build.py",
+  "functions": {
+    "cyancom/wsgi.py": {
+      "maxDuration": 60
     }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/index.html",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "cyancom/wsgi.py"
-    }
-  ]
+  }
 }

@@ -1,0 +1,11 @@
+[project]
+name = "cyan-communications"
+version = "1.0.0"
+description = "Xm Mail + Xm Network on Django"
+requires-python = ">=3.9"
+
+[tool.vercel]
+entrypoint = "cyancom.wsgi:application"
+
+[tool.vercel.scripts]
+build = "python build.py"
